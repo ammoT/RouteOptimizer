@@ -1,6 +1,10 @@
 # Prerequisites
 *.d
 
+#API Key
+config.txt
+build/
+
 #VsCode
 .vscode
 

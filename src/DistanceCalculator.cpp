@@ -11,23 +11,26 @@ const std::string RESET = "\033[0m";
 void printColoredTable(double dA, double dB, double dAB, double dBA)
 {
     std::cout << CYAN << "+----------------------+--------------+" << RESET << "\n";
-    std::cout << CYAN << "|        Percorso      |   Distanza   |" << RESET << "\n";
-    std::cout << CYAN << "+----------------------+--------------+" << RESET << "\n";
+std::cout << CYAN << "|        Percorso      |   Distanza   |" << RESET << "\n";
+std::cout << CYAN << "+----------------------+--------------+" << RESET << "\n";
 
-    auto row = [&](const std::string &name, double km)
-    {
-        std::cout << "| " << std::left << std::setw(20) << name
-                  << " | " << std::right << std::setw(10)
-                  << std::fixed << std::setprecision(1)
-                  << km << " km |\n";
-    };
+auto row = [&](const std::string &name, double km)
+{
+    std::cout << "| "
+              << std::left << std::setw(20) << name
+              << " | "
+              << std::right << std::setw(10)
+              << std::fixed << std::setprecision(1)
+              << km << " km |\n";
+};
 
-    row("A → Dest", dA);
-    row("B → Dest", dB);
-    row("A → B → Dest", dAB);
-    row("B → A → Dest", dBA);
+row("A -> Dest", dA);
+row("B -> Dest", dB);
+row("A -> B -> Dest", dAB);
+row("B -> A -> Dest", dBA);
 
-    std::cout << CYAN << "+----------------------+--------------+" << RESET << "\n\n";
+std::cout << CYAN << "+----------------------+--------------+" << RESET << "\n\n";
+
 }
 
 void DistanceCalculator::compareRoutes(double latA, double lonA,

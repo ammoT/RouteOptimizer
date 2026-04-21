@@ -5,7 +5,10 @@ LDFLAGS = -lcurl
 SRC_DIR = src
 BUILD_DIR = build
 
-SRC = $(wildcard $(SRC_DIR)/*.cpp)
+# Cerca TUTTI i .cpp ricorsivamente
+SRC = $(shell find $(SRC_DIR) -name '*.cpp')
+
+# Converte src/.../file.cpp → build/.../file.o
 OBJ = $(patsubst $(SRC_DIR)/%.cpp,$(BUILD_DIR)/%.o,$(SRC))
 
 TARGET = route_optimizer
@@ -15,11 +18,10 @@ all: $(TARGET)
 $(TARGET): $(OBJ)
 	$(CXX) $(OBJ) -o $(TARGET) $(LDFLAGS)
 
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp | $(BUILD_DIR)
+# Regola generica per compilare qualsiasi .cpp in qualsiasi sottocartella
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
+	mkdir -p $(dir $@)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-$(BUILD_DIR):
-	mkdir -p $(BUILD_DIR)
 
 clean:
 	rm -rf $(BUILD_DIR) $(TARGET)

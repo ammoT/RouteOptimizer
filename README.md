@@ -3,7 +3,6 @@ Uno strumento da terminale scritto in **C++17** che calcola il percorso più eff
 
 - **Google Geocoding API** → converte indirizzi in coordinate  
 - **Google Routes Matrix API** → calcola distanze reali su strada  
-- **Tabella ASCII elegante** → mostra i risultati in modo chiaro e leggibile  
 
 Perfetto per esercitarsi con API REST, cURL, JSON parsing e formattazione CLI.
 
